@@ -1,6 +1,8 @@
+package prelims.Week3;
+
 import java.util.Scanner;
 
-public class Main {
+public class EmployeePay {
     public static void main(String[] args) {
         String firstName, midName, lastName, fullName;
         int employeeNum;
@@ -15,7 +17,7 @@ public class Main {
 
         hourlyRate = inputDouble("Input hourly rate: ");
         hoursWorked = inputDouble("Input hours worked: ");
-        overtimePay = inputDouble("Input hours worked: ");
+        overtimePay = inputDouble("Input overtime pay: ");
         totalDeductions = inputDouble("Input total deductions: ");
 
         displaySummary(firstName, midName, lastName, employeeNum, hourlyRate, hoursWorked, overtimePay, totalDeductions,
@@ -46,15 +48,15 @@ public class Main {
             if (input.hasNextInt()) {
                 n = input.nextInt();
                 input.nextLine();
-                if (!(n < 0))
+                if (n >= 0)
                     break;
                 else {
                     System.out.println("\nInvalid Input! Input must be positive\n");
-                    input.nextLine();
                 }
+            } else {
+                System.out.println("\nInvalid Input! You must input a numerical value\n");
+                input.nextLine();
             }
-            System.out.println("\nInvalid Input! You must input a numerical value\n");
-            input.nextLine();
         }
         return n;
     }
@@ -66,15 +68,15 @@ public class Main {
             if (input.hasNextDouble()) {
                 d = input.nextDouble();
                 input.nextLine();
-                if (!(d < 0))
+                if (d >= 0)
                     break;
                 else {
                     System.out.println("\nInvalid Input! Input must be positive\n");
-                    input.nextLine();
                 }
+            } else {
+                System.out.println("\nInvalid Input! You must input a numerical value\n");
+                input.nextLine();
             }
-            System.out.println("\nInvalid Input! You must input a numerical value\n");
-            input.nextLine();
         }
         return d;
     }
