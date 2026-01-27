@@ -90,8 +90,30 @@ public class EmployeePay {
             double hourlyRate, double hoursWorked, double overtimePay, double totalDeductions, String fullName,
             double netPay) {
         System.out.printf(
-                "\n\n\n\n\n\n---------------------------\n%10sSummary%10s\n---------------------------\nFirst name: %-5s\nMiddle name: %-5s\nLast name: %-5s\nEmployee number: %-5d\nHourly rate: %-5.2f\nHours worked: %-5.2f\nOvertime pay: %-5.2f\nTotal deductions: %-5.2f\n\n===========================\n%s\nYour net pay is %5.2f\n===========================\n",
-                "", "", firstName, midName, lastName, employeeNum, hourlyRate, hoursWorked, overtimePay,
-                totalDeductions, fullName, netPay);
+                """
+
+
+
+
+
+                        ---------------------------
+                                  Summary
+                        ---------------------------
+                        First name:       %s
+                        Middle name:      %s
+                        Last name:        %s
+                        Employee number:  %d
+                        Hourly rate:      %.2f
+                        Hours worked:     %.2f
+                        Overtime pay:     %.2f
+                        Total deductions: %.2f
+
+                        ===========================
+                        %s
+                        Your net pay is %5.2f
+                        ===========================
+                        """,
+                firstName, midName, lastName, employeeNum, hourlyRate, hoursWorked, overtimePay, totalDeductions,
+                fullName, netPay);
     }
 }
