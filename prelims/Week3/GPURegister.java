@@ -22,6 +22,7 @@ public class GPURegister {
         } while (true);
 
         System.out.printf("You have registered %d GPU%s!\n", registeredGPU, registeredGPU > 1 ? "'s" : "");
+        input.close();
     }
 
     public static Scanner input = new Scanner(System.in);
