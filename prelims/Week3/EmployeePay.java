@@ -1,5 +1,3 @@
-package prelims.Week3;
-
 import java.util.Scanner;
 
 public class EmployeePay {
@@ -22,6 +20,8 @@ public class EmployeePay {
 
         displaySummary(firstName, midName, lastName, employeeNum, hourlyRate, hoursWorked, overtimePay, totalDeductions,
                 fullName, computeSalary(hoursWorked, hourlyRate, overtimePay, totalDeductions));
+
+        input.close();
     }
 
     public static Scanner input = new Scanner(System.in);
