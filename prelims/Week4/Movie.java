@@ -21,6 +21,7 @@ public class Movie {
                     Choice: """);
             writer.write("Registration\n" + "1. DVD\n" + "2. VCD\n" + "3. Tape\n" + "Choice: ");
             int code = input.nextInt();
+            input.nextLine();
             writer.write(code + "\n");
 
             if (code == 1) {
@@ -41,11 +42,11 @@ public class Movie {
             writer.write("Title: ");
             String title = input.nextLine();
             writer.write(title + "\n");
-            input.nextLine();
 
             System.out.print("1. Horror\n2. Scifi\n3. Drama\n4. Comedy \n5. Cartoons\nCategory: ");
             writer.write("1. Horror\n2. Scifi\n3. Drama\n4. Comedy \n5. Cartoons\nCategory: ");
             int category = input.nextInt();
+            input.nextLine();
             writer.write(category + "\n");
 
             if (category == 1) {
@@ -63,8 +64,8 @@ public class Movie {
             System.out.print("Minutes: ");
             writer.write("Minutes: ");
             int minutes = input.nextInt();
-            writer.write(minutes + "\n");
             input.nextLine();
+            writer.write(minutes + "\n");
 
             System.out.print("Setting: ");
             writer.write("Setting: ");
@@ -77,6 +78,7 @@ public class Movie {
             System.out.print("Transaction: ");
             writer.write("Transaction: ");
             int transactionType = input.nextInt();
+            input.nextLine();
             writer.write(transactionType + "\n");
 
             if (transactionType == 1) {
@@ -88,8 +90,8 @@ public class Movie {
             System.out.print("Price: ");
             writer.write("Price: ");
             double price = input.nextDouble();
-            writer.write(price + "\n");
             input.nextLine();
+            writer.write(price + "\n");
 
             System.out.print("Register another? ");
             writer.write("Register another? ");
