@@ -34,7 +34,7 @@ public class Movie {
             } else if (code == 3) {
                 System.out.println("Type: Tape");
                 writer.write("Type: Tape\n");
-                tapeTotal = +1;
+                tapeTotal += 1;
             }
 
             System.out.print("Title: ");
