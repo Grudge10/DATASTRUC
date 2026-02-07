@@ -6,7 +6,7 @@ public class Grocery {
     public static void start(Scanner input) {
         StringBuilder receipt = new StringBuilder();
         double dQty, dBill, dPrice, dTotal, dPay, dChange;
-        String strProdName, strReceipt;
+        String strProdName;
         boolean anotherProduct, anotherCustomer;
 
         do {
