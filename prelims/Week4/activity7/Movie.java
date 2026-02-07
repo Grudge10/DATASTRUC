@@ -46,7 +46,7 @@ public class Movie {
             System.out.println("1. Rental");
             System.out.println("2. Sales");
 
-            int transactionType = InputMethods.inputInt("Transaction: ", input,1 ,2);
+            int transactionType = InputMethods.inputInt("Transaction: ", input, 1, 2);
 
             if (transactionType == 1)
                 rent++;
