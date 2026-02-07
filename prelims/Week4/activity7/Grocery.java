@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class Grocery {
     public static void start(Scanner input) {
+        StringBuilder receipt = new StringBuilder();
         double dQty, dBill, dPrice, dTotal, dPay, dChange;
         String strProdName, strReceipt;
         boolean anotherProduct, anotherCustomer;
 
         do {
             dBill = 0;
-            strReceipt = String.format("\n%-15s %-10s %-10s %-10s\n", "ITEM", "QTY", "PRICE", "TOTAL");
-            strReceipt += "------------------------------------------------------------\n";
+            receipt.append(String.format("\n%-15s %-10s %-10s %-10s\n", "ITEM", "QTY", "PRICE", "TOTAL"));
+            receipt.append("------------------------------------------------------------\n");
 
             System.out.println("\n****************************************");
             System.out.println("         WELCOME TO THE STORE          ");
@@ -26,7 +27,7 @@ public class Grocery {
                 dTotal = dQty * dPrice;
                 dBill = dBill + dTotal;
 
-                strReceipt += String.format("%-15s %-10.2f %-10.2f %-10.2f\n", strProdName, dQty, dPrice, dTotal);
+                receipt.append(String.format("%-15s %-10.2f %-10.2f %-10.2f\n", strProdName, dQty, dPrice, dTotal));
 
                 System.out.printf("Current Item Total: %.2f%n", dTotal);
 
@@ -34,7 +35,7 @@ public class Grocery {
             } while (anotherProduct);
 
             System.out.println("\n======================= FINAL RECEIPT ======================");
-            System.out.print(strReceipt);
+            System.out.print(receipt);
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-37s %.2f\n", "GRAND TOTAL:", dBill);
             System.out.println("============================================================\n");
