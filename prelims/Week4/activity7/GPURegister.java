@@ -35,10 +35,10 @@ public class GPURegister {
                 *                  Summary                  *
                 *********************************************
                 *   Model name: %-28s*
-                *   Brand: %-33s*
-                *   VRAM: %-34d*
-                *   Watts: %-33d*
-                *   Price: %-33.2f*
+                *   Brand:      %-28s*
+                *   VRAM:       %-28d*
+                *   Watts:      %-28d*
+                *   Price:      %-28.2f*
                 *********************************************
 
 

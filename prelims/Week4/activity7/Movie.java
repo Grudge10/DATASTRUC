@@ -39,7 +39,7 @@ public class Movie {
             else if (category == 5)
                 cartoon++;
 
-            int minutes = InputMethods.inputInt("Minutes: ", input);
+            int minutes = InputMethods.inputInt("Minutes: ", input, 1);
 
             String genre = InputMethods.inputString("Setting: ", input);
 
