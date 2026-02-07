@@ -10,7 +10,7 @@ public class Movie {
         while (choice) {
             System.out.println("Registration");
             System.out.println("1. DVD \n2. VCD \n3. Tape");
-            int code = InputMethods.inputInt("Choice: ", input);
+            int code = InputMethods.inputInt("Choice: ", input, 1, 3);
 
             if (code == 1) {
                 System.out.println("Type: DVD");
@@ -26,7 +26,7 @@ public class Movie {
             String title = InputMethods.inputString("Title: ", input);
 
             System.out.println("1. Horror\n2. Scifi\n3. Drama\n4. Comedy \n5. Cartoons");
-            int category = InputMethods.inputInt("Category: ", input);
+            int category = InputMethods.inputInt("Category: ", input, 1, 5);
 
             if (category == 1)
                 horror++;
@@ -46,7 +46,7 @@ public class Movie {
             System.out.println("1. Rental");
             System.out.println("2. Sales");
 
-            int transactionType = InputMethods.inputInt("Transaction: ", input);
+            int transactionType = InputMethods.inputInt("Transaction: ", input,1 ,2);
 
             if (transactionType == 1)
                 rent++;

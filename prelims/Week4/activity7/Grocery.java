@@ -21,7 +21,7 @@ public class Grocery {
                 System.out.println("\n--- Enter Item Details ---");
                 strProdName = InputMethods.inputString("Product Name: ", input);
                 dPrice = InputMethods.inputDouble("Price: ", input);
-                dQty = InputMethods.inputDouble("Quantity: ", input);
+                dQty = InputMethods.inputDouble("Quantity: ", input, 1);
 
                 dTotal = dQty * dPrice;
                 dBill = dBill + dTotal;

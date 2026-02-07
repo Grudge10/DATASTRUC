@@ -1,6 +1,5 @@
 package prelims.Week4.activity7;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,22 +18,7 @@ public class Main {
                         [0] Exit
 
                     """);
-            int choice = 0;
-            while (true) {
-                try {
-                    choice = input.nextInt();
-                    input.nextLine();
-
-                    if (choice > 3 || choice < 0) {
-                        System.out.println("[Error] Invalid Input! You must choose the following!");
-                    } else {
-                        break;
-                    }
-                } catch (InputMismatchException e) {
-                    System.out.println("[Error] Invalid Input! You must enter a numerical value!");
-                    input.nextLine();
-                }
-            }
+            int choice = InputMethods.inputInt("Choice: ", input, 0, 3);
 
             if (choice == 1) {
                 Grocery.start(input);
