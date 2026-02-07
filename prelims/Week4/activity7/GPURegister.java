@@ -24,6 +24,8 @@ public class GPURegister {
         } while (true);
 
         System.out.printf("You have registered %d GPU%s!\n", registeredGPU, registeredGPU > 1 ? "'s" : "");
+
+        System.out.println("\nReturning to main menu...\n");
     }
 
     public static void printSummary(String modelName, String brand, int vram, int watts, double price) {
