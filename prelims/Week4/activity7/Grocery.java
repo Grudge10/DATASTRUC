@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Grocery {
     public static void start(Scanner input) {
-        StringBuilder receipt = new StringBuilder();
         double dQty, dBill, dPrice, dTotal, dPay, dChange;
         String strProdName;
         boolean anotherProduct, anotherCustomer;
 
         do {
             dBill = 0;
+            StringBuilder receipt = new StringBuilder();
             receipt.append(String.format("\n%-15s %-10s %-10s %-10s\n", "ITEM", "QTY", "PRICE", "TOTAL"));
             receipt.append("------------------------------------------------------------\n");
 
