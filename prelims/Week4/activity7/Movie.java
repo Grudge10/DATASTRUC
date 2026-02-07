@@ -1,21 +1,16 @@
 package prelims.Week4.activity7;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Movie {
-    public static Scanner input = new Scanner(System.in);
-
-    public static void start() {
-        
+    public static void start(Scanner input) {
         int comedy = 0, horror = 0, scifi = 0, drama = 0, cartoon = 0, dvdTotal = 0, vcdTotal = 0, tapeTotal = 0,
                 rent = 0, sales = 0;
         boolean choice = true;
         while (choice) {
             System.out.println("Registration");
             System.out.println("1. DVD \n2. VCD \n3. Tape");
-            System.out.print("Choice: ");
-            int code = input.nextInt();
-            input.nextLine();
+            int code = InputMethods.inputInt("Choice: ", input);
 
             if (code == 1) {
                 System.out.println("Type: DVD");
@@ -27,52 +22,41 @@ public class Movie {
                 System.out.println("Type: Tape");
                 tapeTotal += 1;
             }
-            System.out.print("Title: ");
-            String title = input.nextLine();
+
+            String title = InputMethods.inputString("Title: ", input);
+
             System.out.println("1. Horror\n2. Scifi\n3. Drama\n4. Comedy \n5. Cartoons");
-            System.out.print("Category: ");
-            int category = input.nextInt();
-            input.nextLine();
-            if (category == 1) {
+            int category = InputMethods.inputInt("Category: ", input);
+
+            if (category == 1)
                 horror++;
-            } else if (category == 2) {
+            else if (category == 2)
                 scifi++;
-            } else if (category == 3) {
+            else if (category == 3)
                 drama++;
-            } else if (category == 4) {
+            else if (category == 4)
                 comedy++;
-            } else if (category == 5) {
+            else if (category == 5)
                 cartoon++;
-            }
 
-            System.out.print("Minutes: ");
-            int minutes = input.nextInt();
-            input.nextLine();
+            int minutes = InputMethods.inputInt("Minutes: ", input);
 
-            System.out.print("Setting: ");
-            String genre = input.nextLine();
+            String genre = InputMethods.inputString("Setting: ", input);
 
             System.out.println("1. Rental");
             System.out.println("2. Sales");
 
-            System.out.print("Transaction: ");
-            int transactionType = input.nextInt();
-            input.nextLine();
-            if (transactionType == 1) {
+            int transactionType = InputMethods.inputInt("Transaction: ", input);
+
+            if (transactionType == 1)
                 rent++;
-            } else if (transactionType == 2) {
+            else if (transactionType == 2)
                 sales++;
-            }
 
-            System.out.print("Price: ");
-            double price = input.nextDouble();
-            input.nextLine();
+            double price = InputMethods.inputDouble("Price: ", input);
 
-            System.out.print("Register another? ");
-            String userChoice = input.nextLine().toLowerCase();
-            char charUserChoice = userChoice.charAt(0);
-
-            choice = charUserChoice == 'n' ? false : true;
+            if (!InputMethods.yesOrNo("Register Another? (Y/N): ", input))
+                break;
         }
 
         System.out.printf(

@@ -1,13 +1,12 @@
 package prelims.Week4.activity7;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Grocery {
-    public static void start() {
-        Scanner input = new Scanner(System.in);
-        String strProdName, strReceipt;
-        char cCustomer, cAnotherP;
+    public static void start(Scanner input) {
         double dQty, dBill, dPrice, dTotal, dPay, dChange;
+        String strProdName, strReceipt;
+        boolean anotherProduct, anotherCustomer;
 
         do {
             dBill = 0;
@@ -20,9 +19,9 @@ public class Grocery {
 
             do {
                 System.out.println("\n--- Enter Item Details ---");
-                strProdName = getValidString(input, "Product Name: ");
-                dPrice = getValidDouble(input, "Price:        ", 0);
-                dQty = getValidDouble(input, "Quantity:     ", 1);
+                strProdName = InputMethods.inputString("Product Name: ", input);
+                dPrice = InputMethods.inputDouble("Price: ", input);
+                dQty = InputMethods.inputDouble("Quantity: ", input);
 
                 dTotal = dQty * dPrice;
                 dBill = dBill + dTotal;
@@ -31,8 +30,8 @@ public class Grocery {
 
                 System.out.printf("Current Item Total: %.2f%n", dTotal);
 
-                cAnotherP = getValidYN(input, "Another product (Y/N)? ");
-            } while (cAnotherP == 'Y');
+                anotherProduct = InputMethods.yesOrNo("Another product? (Y/N): ", input);
+            } while (anotherProduct);
 
             System.out.println("\n======================= FINAL RECEIPT ======================");
             System.out.print(strReceipt);
@@ -40,7 +39,7 @@ public class Grocery {
             System.out.printf("%-37s %.2f\n", "GRAND TOTAL:", dBill);
             System.out.println("============================================================\n");
 
-            dPay = getValidDouble(input, "Payment Amount: ", dBill);
+            dPay = InputMethods.inputDouble("Payment Amount: ", input);
 
             dChange = dPay - dBill;
 
@@ -49,57 +48,9 @@ public class Grocery {
             System.out.println("Thank you for shopping!");
             System.out.println("-----------------------------------");
 
-            cCustomer = getValidYN(input, "\nAnother customer (Y/N)? ");
-        } while (cCustomer == 'Y');
+            anotherCustomer = InputMethods.yesOrNo("\nAnother customer (Y/N)? ", input);
+        } while (anotherCustomer);
 
         System.out.println("\nGrocery program terminating...");
-    }
-
-    public static double getValidDouble(Scanner input, String prompt, double minValue) {
-        double value;
-        while (true) {
-            System.out.print(prompt);
-            if (input.hasNextDouble()) {
-                value = input.nextDouble();
-                input.nextLine();
-                if (value >= minValue) {
-                    return value;
-                } else {
-                    System.out.printf("Invalid! Must be at least %.2f: \n", minValue);
-                }
-            } else {
-                System.out.println("Invalid input! Please enter a number: ");
-                input.nextLine();
-            }
-        }
-    }
-
-    public static String getValidString(Scanner input, String prompt) {
-        String s;
-        while (true) {
-            System.out.print(prompt);
-            s = input.nextLine();
-            if (s.length() > 0) {
-                return s;
-            }
-            System.out.println("Input cannot be empty.");
-        }
-    }
-
-    public static char getValidYN(Scanner input, String prompt) {
-        String s;
-        char c;
-        while (true) {
-            System.out.print(prompt);
-            s = input.nextLine().toUpperCase();
-
-            if (s.length() > 0) {
-                c = s.charAt(0);
-                if (c == 'Y' || c == 'N') {
-                    return c;
-                }
-            }
-            System.out.println("Error! Invalid input. Please enter 'Y' for Yes or 'N' for No.");
-        }
     }
 }

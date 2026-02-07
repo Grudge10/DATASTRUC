@@ -1,0 +1,78 @@
+package prelims.Week4.activity7;
+
+import java.util.Scanner;
+
+public class InputMethods {
+    public static String inputString(String message, Scanner input) {
+        String s;
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextLine()) {
+                s = input.nextLine().trim();
+                if (!s.isEmpty()) {
+                    break;
+                }
+            }
+            System.out.println("\nInvalid Input! Retry\n");
+        }
+        return s;
+    }
+
+    public static int inputInt(String message, Scanner input) {
+        int n;
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextInt()) {
+                n = input.nextInt();
+                input.nextLine();
+                if (n >= 0)
+                    break;
+                else {
+                    System.out.println("\nInvalid Input! Input must be positive\n");
+                }
+            } else {
+                System.out.println("\nInvalid Input! You must input a numerical value\n");
+                input.nextLine();
+            }
+        }
+        return n;
+    }
+
+    public static double inputDouble(String message, Scanner input) {
+        double d;
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextDouble()) {
+                d = input.nextDouble();
+                input.nextLine();
+                if (d >= 0)
+                    break;
+                else {
+                    System.out.println("\nInvalid Input! Input must be positive\n");
+                }
+            } else {
+                System.out.println("\nInvalid Input! You must input a numerical value\n");
+                input.nextLine();
+            }
+        }
+        return d;
+    }
+
+    public static boolean yesOrNo(String message, Scanner input) {
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextLine()) {
+                String choice = input.nextLine().trim().toUpperCase();
+                if (!choice.isEmpty()) {
+                    char yesOrNo = choice.charAt(0);
+                    if (yesOrNo == 'Y') {
+                        return true;
+                    } else if (yesOrNo == 'N') {
+                        return false;
+                    }
+                }
+            }
+            System.out.println("\nInvalid Input! You must input either Y or N\n");
+        }
+    }
+}
