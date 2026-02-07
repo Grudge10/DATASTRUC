@@ -9,8 +9,8 @@ public class GPURegister {
         double price;
 
         do {
-            modelName = InputMethods.inputString("Model name: ", input);
-            brand = InputMethods.inputString("Brand name: ", input);
+            modelName = InputMethods.inputString("Model name: ", input, 28);
+            brand = InputMethods.inputString("Brand name: ", input, 28);
             vram = InputMethods.inputInt("Amount of VRAM: ", input);
             watts = InputMethods.inputInt("Watt consumption: ", input);
             price = InputMethods.inputDouble("GPU price: ", input);

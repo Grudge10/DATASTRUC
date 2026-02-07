@@ -20,7 +20,7 @@ public class Grocery {
 
             do {
                 System.out.println("\n--- Enter Item Details ---");
-                strProdName = InputMethods.inputString("Product Name: ", input);
+                strProdName = InputMethods.inputString("Product Name: ", input, 15);
                 dPrice = InputMethods.inputDouble("Price: ", input);
                 dQty = InputMethods.inputDouble("Quantity: ", input, 1);
 
