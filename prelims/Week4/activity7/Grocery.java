@@ -50,7 +50,5 @@ public class Grocery {
 
             anotherCustomer = InputMethods.yesOrNo("\nAnother customer (Y/N)? ", input);
         } while (anotherCustomer);
-
-        System.out.println("\nGrocery program terminating...");
     }
 }

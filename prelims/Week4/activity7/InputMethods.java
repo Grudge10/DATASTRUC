@@ -28,7 +28,27 @@ public class InputMethods {
                 if (n >= 0)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be positive\n");
+                    System.out.println("\nInvalid Input! Input must be greater than 0!\n");
+                }
+            } else {
+                System.out.println("\nInvalid Input! You must input a numerical value\n");
+                input.nextLine();
+            }
+        }
+        return n;
+    }
+
+    public static int inputInt(String message, Scanner input, int min, int max) {
+        int n;
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextInt()) {
+                n = input.nextInt();
+                input.nextLine();
+                if (n >= min && n <= max)
+                    break;
+                else {
+                    System.out.println("\nInvalid Input! Input must be between " + min + " and " + max + "\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
@@ -48,7 +68,27 @@ public class InputMethods {
                 if (d >= 0)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be positive\n");
+                    System.out.println("\nInvalid Input! Input must be greater than 0!\n");
+                }
+            } else {
+                System.out.println("\nInvalid Input! You must input a numerical value\n");
+                input.nextLine();
+            }
+        }
+        return d;
+    }
+
+    public static double inputDouble(String message, Scanner input, double min, double max) {
+        double d;
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextDouble()) {
+                d = input.nextDouble();
+                input.nextLine();
+                if (d >= min && d <= max)
+                    break;
+                else {
+                    System.out.println("\nInvalid Input! Input must be between " + min + " and " + max + "\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
