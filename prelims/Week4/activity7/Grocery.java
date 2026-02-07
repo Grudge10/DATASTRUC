@@ -35,7 +35,7 @@ public class Grocery {
             } while (anotherProduct);
 
             System.out.println("\n======================= FINAL RECEIPT ======================");
-            System.out.print(receipt);
+            System.out.print(receipt.toString());
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-37s %.2f\n", "GRAND TOTAL:", dBill);
             System.out.println("============================================================\n");
