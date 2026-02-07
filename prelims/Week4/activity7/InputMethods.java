@@ -9,13 +9,24 @@ public class InputMethods {
             System.out.print(message);
             if (input.hasNextLine()) {
                 s = input.nextLine().trim();
-                if (!s.isEmpty()) {
-                    break;
-                }
+                if (!s.isEmpty())
+                    return s;
             }
             System.out.println("\nInvalid Input! Retry\n");
         }
-        return s;
+    }
+
+    public static String inputString(String message, Scanner input, int length) {
+        String s;
+        while (true) {
+            System.out.print(message);
+            if (input.hasNextLine()) {
+                s = input.nextLine().trim();
+                if (!s.isEmpty())
+                    return s.length() > length ? s.substring(0, length) : s;
+            }
+            System.out.println("\nInvalid Input! Retry\n");
+        }
     }
 
     public static int inputInt(String message, Scanner input) {
@@ -26,16 +37,14 @@ public class InputMethods {
                 n = input.nextInt();
                 input.nextLine();
                 if (n >= 0)
-                    break;
-                else {
+                    return n;
+                else
                     System.out.println("\nInvalid Input! Input must be at least 0!\n");
-                }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
                 input.nextLine();
             }
         }
-        return n;
     }
 
     public static int inputInt(String message, Scanner input, int min) {
@@ -46,16 +55,14 @@ public class InputMethods {
                 n = input.nextInt();
                 input.nextLine();
                 if (n >= min)
-                    break;
-                else {
+                    return n;
+                else
                     System.out.println("\nInvalid Input! Input must be at least " + min + "!\n");
-                }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
                 input.nextLine();
             }
         }
-        return n;
     }
 
     public static int inputInt(String message, Scanner input, int min, int max) {
@@ -66,17 +73,15 @@ public class InputMethods {
                 n = input.nextInt();
                 input.nextLine();
                 if (n >= min && n <= max)
-                    break;
-                else {
+                    return n;
+                else
                     System.out.println(
                             "\nInvalid Input! Input must be between " + min + " and " + max + " (inclusive)!\n");
-                }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
                 input.nextLine();
             }
         }
-        return n;
     }
 
     public static double inputDouble(String message, Scanner input) {
@@ -87,16 +92,14 @@ public class InputMethods {
                 d = input.nextDouble();
                 input.nextLine();
                 if (d >= 0)
-                    break;
-                else {
+                    return d;
+                else
                     System.out.println("\nInvalid Input! Input must be at least 0!\n");
-                }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
                 input.nextLine();
             }
         }
-        return d;
     }
 
     public static double inputDouble(String message, Scanner input, double min) {
@@ -107,16 +110,14 @@ public class InputMethods {
                 d = input.nextDouble();
                 input.nextLine();
                 if (d >= min)
-                    break;
-                else {
+                    return d;
+                else
                     System.out.println("\nInvalid Input! Input must be at least " + min + "!\n");
-                }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
                 input.nextLine();
             }
         }
-        return d;
     }
 
     public static double inputDouble(String message, Scanner input, double min, double max) {
@@ -127,17 +128,15 @@ public class InputMethods {
                 d = input.nextDouble();
                 input.nextLine();
                 if (d >= min && d <= max)
-                    break;
-                else {
+                    return d;
+                else
                     System.out.println(
                             "\nInvalid Input! Input must be between " + min + " and " + max + " (inclusive)!\n");
-                }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
                 input.nextLine();
             }
         }
-        return d;
     }
 
     public static boolean yesOrNo(String message, Scanner input) {
@@ -147,11 +146,10 @@ public class InputMethods {
                 String choice = input.nextLine().trim().toUpperCase();
                 if (!choice.isEmpty()) {
                     char yesOrNo = choice.charAt(0);
-                    if (yesOrNo == 'Y') {
+                    if (yesOrNo == 'Y')
                         return true;
-                    } else if (yesOrNo == 'N') {
+                    else if (yesOrNo == 'N')
                         return false;
-                    }
                 }
             }
             System.out.println("\nInvalid Input! You must input either Y or N\n");
