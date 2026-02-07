@@ -28,7 +28,7 @@ public class InputMethods {
                 if (n >= 0)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be greater than 0!\n");
+                    System.out.println("\nInvalid Input! Input must be greater than or equal to 0!\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
@@ -48,7 +48,7 @@ public class InputMethods {
                 if (n >= min)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be greater than " + min + "!\n");
+                    System.out.println("\nInvalid Input! Input must be greater than or equal to " + min + "!\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
@@ -68,7 +68,7 @@ public class InputMethods {
                 if (n >= min && n <= max)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be between " + min + " and " + max + "\n");
+                    System.out.println("\nInvalid Input! Input must be between " + min + " and " + max + " (inclusive)\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
@@ -88,7 +88,7 @@ public class InputMethods {
                 if (d >= 0)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be greater than 0!\n");
+                    System.out.println("\nInvalid Input! Input must be greater than or equal to 0!\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
@@ -108,7 +108,7 @@ public class InputMethods {
                 if (d >= min)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be greater than " + min + "!\n");
+                    System.out.println("\nInvalid Input! Input must be greater than or equal to " + min + "!\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
@@ -128,7 +128,7 @@ public class InputMethods {
                 if (d >= min && d <= max)
                     break;
                 else {
-                    System.out.println("\nInvalid Input! Input must be between " + min + " and " + max + "\n");
+                    System.out.println("\nInvalid Input! Input must be between " + min + " and " + max + " (inclusive)\n");
                 }
             } else {
                 System.out.println("\nInvalid Input! You must input a numerical value\n");
