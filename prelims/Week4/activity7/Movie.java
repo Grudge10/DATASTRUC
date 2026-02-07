@@ -6,6 +6,17 @@ public class Movie {
     public static void start(Scanner input) {
         int comedy = 0, horror = 0, scifi = 0, drama = 0, cartoon = 0, dvdTotal = 0, vcdTotal = 0, tapeTotal = 0,
                 rent = 0, sales = 0;
+
+        System.out.print("""
+            
+             ______________________________________
+            |                                      |
+            |   LIAM'S SUPERMALL MOVIE RENTAL      |
+            |          REGISTRATION                |
+            |______________________________________|
+            
+            """);
+
         boolean choice = true;
         while (choice) {
             System.out.println("Registration");

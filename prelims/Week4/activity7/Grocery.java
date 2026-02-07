@@ -14,9 +14,15 @@ public class Grocery {
             receipt.append(String.format("\n%-15s %-10s %-10s %-10s\n", "ITEM", "QTY", "PRICE", "TOTAL"));
             receipt.append("------------------------------------------------------------\n");
 
-            System.out.println("\n****************************************");
-            System.out.println("         WELCOME TO THE STORE          ");
-            System.out.println("****************************************");
+            System.out.print("""
+                
+                 ______________________________________
+                |                                      |
+                |     LIAM'S SUPERMALL GROCERY         |
+                |         DEPARTMENT STORE             |
+                |______________________________________|
+                
+                """);
 
             do {
                 System.out.println("\n--- Enter Item Details ---");

@@ -8,6 +8,15 @@ public class GPURegister {
         int vram, watts, registeredGPU = 0;
         double price;
 
+        System.out.print("""
+            
+             ______________________________________
+            |                                      |
+            |   LIAM'S SUPERMALL GPU REGISTRATION  |
+            |______________________________________|
+            
+            """);
+
         do {
             modelName = InputMethods.inputString("Model name: ", input, 28);
             brand = InputMethods.inputString("Brand name: ", input, 28);
@@ -33,15 +42,18 @@ public class GPURegister {
 
 
                 You have registered a GPU!
-                *********************************************
-                *                  Summary                  *
-                *********************************************
-                *   Model name: %-28s*
-                *   Brand:      %-28s*
-                *   VRAM:       %-28d*
-                *   Watts:      %-28d*
-                *   Price:      %-28.2f*
-                *********************************************
+
+                 ___________________________________________
+                |                                           |
+                |                  Summary                  |
+                |___________________________________________|
+                |                                           |
+                |   Model name: %-28s|
+                |   Brand:      %-28s|
+                |   VRAM:       %-28d|
+                |   Watts:      %-28d|
+                |   Price:      %-28.2f|
+                |___________________________________________|
 
 
                 """, modelName, brand, vram, watts, price);
