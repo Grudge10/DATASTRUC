@@ -39,7 +39,7 @@ public class Grocery {
             System.out.printf("%-37s %.2f\n", "GRAND TOTAL:", dBill);
             System.out.println("============================================================\n");
 
-            dPay = InputMethods.inputDouble("Payment Amount: ", input);
+            dPay = InputMethods.inputDouble("Payment Amount: ", input, dBill);
 
             dChange = dPay - dBill;
 
