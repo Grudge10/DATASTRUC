@@ -3,8 +3,10 @@ package prelims.Week4.activity7;
 import java.util.*;
 
 public class Movie {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+    public static Scanner input = new Scanner(System.in);
+
+    public static void start() {
+        
         int comedy = 0, horror = 0, scifi = 0, drama = 0, cartoon = 0, dvdTotal = 0, vcdTotal = 0, tapeTotal = 0,
                 rent = 0, sales = 0;
         boolean choice = true;

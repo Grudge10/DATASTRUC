@@ -3,7 +3,7 @@ package prelims.Week4.activity7;
 import java.util.*;
 
 public class Grocery {
-    public static void main(String[] args) {
+    public static void start() {
         Scanner input = new Scanner(System.in);
         String strProdName, strReceipt;
         char cCustomer, cAnotherP;

@@ -3,7 +3,7 @@ package prelims.Week4.activity7;
 import java.util.Scanner;
 
 public class GPURegister {
-    public static void main(String[] args) {
+    public static void start() {
         String modelName, brand;
         int vram, watts, registeredGPU = 0;
         double price;
