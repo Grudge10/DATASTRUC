@@ -53,7 +53,6 @@ public class Grocery {
         } while (cCustomer == 'Y');
 
         System.out.println("\nGrocery program terminating...");
-        input.close();
     }
 
     public static double getValidDouble(Scanner input, String prompt, double minValue) {

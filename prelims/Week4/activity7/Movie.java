@@ -76,7 +76,5 @@ public class Movie {
         System.out.printf(
                 "Reports\nFor rent: %d\nFor sale: %d\nVCD Total: %d\nDVD Total: %d\nTape Total: %d\nHorror Movies: %d \nScifi Movies: %d\nDrama Movies: %d\nComedy Movies: %d\nCartoons: %d\n",
                 rent, sales, vcdTotal, dvdTotal, tapeTotal, horror, scifi, drama, comedy, cartoon);
-
-        input.close();
     }
 }
