@@ -11,56 +11,50 @@ public class GPURegister {
     public int vram, watts;
     public double price;
 
+    public GPURegister(String modelName, String brand, int vram, int watts, double price) {
+        this.modelName = modelName;
+        this.brand = brand;
+        this.vram = vram;
+        this.watts = watts;
+        this.price = price;
+    }
+
     public static void start(Scanner input) {
         List<GPURegister> gpu = new ArrayList<>();
 
         System.out.print("""
-            
-             ______________________________________
-            |                                      |
-            |   LIAM'S SUPERMALL GPU REGISTRATION  |
-            |           (Currently WIP!)           |
-            |______________________________________|
-            
-            """);
-            
+
+                 ______________________________________
+                |                                      |
+                |   LIAM'S SUPERMALL GPU REGISTRATION  |
+                |           (Currently WIP!)           |
+                |______________________________________|
+
+                """);
+
         System.out.println("\nReturning to main menu...\n");
     }
 
-    public void loadList(List<GPURegister> gpu) {
+    public List<GPURegister> loadList() {
+        List<GPURegister> loadList = new ArrayList<>();
+
         try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
             String line;
-            int counter = 1;
-            GPURegister loadGpu = new GPURegister();
             while ((line = reader.readLine()) != null) {
-
-                switch (counter) {
-                    case 1:
-                        loadGpu.modelName = line;
-                        ++counter;
-                        break;
-                    case 2:
-                        loadGpu.brand = line;
-                        ++counter;
-                        break;
-                    case 3:
-                        loadGpu.vram = Integer.parseInt(line);
-                        ++counter;
-                        break;
-                    case 4:
-                        loadGpu.watts = Integer.parseInt(line);
-                        ++counter;
-                        break;
-                    case 5:
-                        loadGpu.price = Double.parseDouble(line);
-                        counter = 1;
-                        break;
-                }
+                String brand = reader.readLine();
+                int vram = Integer.parseInt(reader.readLine());
+                int watts = Integer.parseInt(reader.readLine());
+                double price = Double.parseDouble(reader.readLine());
+                
+                GPURegister loadGpu = new GPURegister(line, brand, vram, watts, price);
+                loadList.add(loadGpu);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found. Starting from scratch!");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return loadList;
     }
 }
