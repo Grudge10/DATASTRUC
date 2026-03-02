@@ -11,6 +11,9 @@ public class GPURegister {
     public int vram, watts;
     public double price;
 
+    public GPURegister() {
+    }
+
     public GPURegister(String modelName, String brand, int vram, int watts, double price) {
         this.modelName = modelName;
         this.brand = brand;
@@ -20,7 +23,7 @@ public class GPURegister {
     }
 
     public static void start(Scanner input) {
-        List<GPURegister> gpu = new ArrayList<>();
+        List<GPURegister> gpu = loadList();
 
         System.out.print("""
 
@@ -32,10 +35,12 @@ public class GPURegister {
 
                 """);
 
+        displayList(gpu);
+
         System.out.println("\nReturning to main menu...\n");
     }
 
-    public List<GPURegister> loadList() {
+    public static List<GPURegister> loadList() {
         List<GPURegister> loadList = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
@@ -45,7 +50,7 @@ public class GPURegister {
                 int vram = Integer.parseInt(reader.readLine());
                 int watts = Integer.parseInt(reader.readLine());
                 double price = Double.parseDouble(reader.readLine());
-                
+
                 GPURegister loadGpu = new GPURegister(line, brand, vram, watts, price);
                 loadList.add(loadGpu);
             }
@@ -56,5 +61,17 @@ public class GPURegister {
         }
 
         return loadList;
+    }
+
+    public static void displayList(List<GPURegister> gpu) {
+        for (GPURegister displayGpu : gpu) {
+            System.out.printf("""
+                    Name:  %sw
+                    Brand: %s
+                    Vram:  %d
+                    Watts: %d
+                    Price: %.2f
+                    """, displayGpu.modelName, displayGpu.brand, displayGpu.vram, displayGpu.watts, displayGpu.price);
+        }
     }
 }
