@@ -31,8 +31,8 @@ public class GPURegister {
         try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
             String line;
             int counter = 1;
+            GPURegister loadGpu = new GPURegister();
             while ((line = reader.readLine()) != null) {
-                GPURegister loadGpu = new GPURegister();
 
                 switch (counter) {
                     case 1:
@@ -40,16 +40,19 @@ public class GPURegister {
                         ++counter;
                         break;
                     case 2:
-                        loadGpu.
+                        loadGpu.brand = line;
                         ++counter;
                         break;
                     case 3:
+                        loadGpu.vram = Integer.parseInt(line);
                         ++counter;
                         break;
                     case 4:
+                        loadGpu.watts = Integer.parseInt(line);
                         ++counter;
                         break;
                     case 5:
+                        loadGpu.price = Double.parseDouble(line);
                         counter = 1;
                         break;
                 }
