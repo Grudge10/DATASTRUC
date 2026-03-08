@@ -22,17 +22,60 @@ public class GPURegister {
     public static void start(Scanner input) {
         GPURegister[] gpuArray = loadArray();
 
-        System.out.print("""
+        boolean userHasNotExited = true;
+        while (userHasNotExited) {
+            System.out.print("""
 
-                 ______________________________________
-                |                                      |
-                |   LIAM'S SUPERMALL GPU REGISTRATION  |
-                |           (Currently WIP!)           |
-                |______________________________________|
+                     ______________________________________
+                    |                                      |
+                    |   LIAM'S SUPERMALL GPU REGISTRATION  |
+                    |______________________________________|
+                     ______________________________________
+                    |                                      |
+                    | OPTIONS:                             |
+                    | [1] Add GPU                          |
+                    | [2] Search for GPU                   |
+                    | [3] Edit GPU Info                    |
+                    | [4] Delete GPU                       |
+                    | [5] Sort GPU                         |
+                    | [6] List GPUs                        |
+                    | [0] Exit                             |
+                    |______________________________________|
 
-                """);
+                    """);
 
-        displayArray(gpuArray);
+            int choice = InputMethods.inputInt("Choice: ", input, 0, 6);
+            System.out.println();
+
+            switch (choice) {
+                case 0:
+                    userHasNotExited = false;
+                    break;
+                case 1:
+                    System.out.println("Adding GPU...\n");
+                    System.out.println("Done!");
+                    break;
+                case 2:
+                    System.out.println("Searching for GPU...\n");
+                    System.out.println("Done!");
+                    break;
+                case 3:
+                    System.out.println("Editing GPU Info...\n");
+                    System.out.println("Done!");
+                    break;
+                case 4:
+                    System.out.println("Deleting GPU...\n");
+                    System.out.println("Done!");
+                    break;
+                case 5:
+                    System.out.println("Sorting GPU");
+                    System.out.println("Done!");
+                    break;
+                case 6:
+                    displayArray(gpuArray);
+                    break;
+            }
+        }
 
         System.out.println("\nReturning to main menu...\n");
     }
