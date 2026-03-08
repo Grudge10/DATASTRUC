@@ -20,7 +20,7 @@ public class GPURegister {
     }
 
     public static void start(Scanner input) {
-        GPURegister[] gpuArray = loadArray();
+        List<GPURegister> gpuList = loadList();
 
         boolean userHasNotExited = true;
         while (userHasNotExited) {
@@ -72,7 +72,7 @@ public class GPURegister {
                     System.out.println("Done!");
                     break;
                 case 6:
-                    displayArray(gpuArray);
+                    displayList(gpuList);
                     break;
             }
         }
@@ -80,41 +80,30 @@ public class GPURegister {
         System.out.println("\nReturning to main menu...\n");
     }
 
-    public static GPURegister[] loadArray() {
+    public static List<GPURegister> loadList() {
         System.out.println("\nLoading GPU Array...");
 
-        int totalGpus = 0;
+        List<GPURegister> gpuList = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
-            while (reader.readLine() != null) {
-                totalGpus++;
-            }
-        } catch (IOException e) {
-            System.out.println("Error counting file...");
-        }
-
-        int size = totalGpus / 5;
-
-        GPURegister[] gpuArray = new GPURegister[size];
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
-            for (int i = 0; i < size; i++) {
-                String name = reader.readLine();
+            String name;
+            while ((name = reader.readLine()) != null) {
                 String brand = reader.readLine();
                 int vram = Integer.parseInt(reader.readLine());
                 int watts = Integer.parseInt(reader.readLine());
                 double price = Double.parseDouble(reader.readLine());
 
-                gpuArray[i] = new GPURegister(name, brand, vram, watts, price);
+                GPURegister loadGPU = new GPURegister(name, brand, vram, watts, price);
+                gpuList.add(loadGPU);
             }
         } catch (IOException e) {
             System.out.println("Error filling array...");
         }
 
-        return gpuArray;
+        return gpuList;
     }
 
-    public static void displayArray(GPURegister[] gpu) {
+    public static void displayList(List<GPURegister> gpu) {
         System.out.println("Displaying all GPUs...\n");
 
         for (GPURegister displayGpu : gpu) {
