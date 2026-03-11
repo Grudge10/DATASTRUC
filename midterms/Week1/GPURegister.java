@@ -59,7 +59,7 @@ public class GPURegister {
         return gpuArray;
     }
 
-    public static void displayArray(GPURegister[] gpu) {
+    public static void displayArray(List<GPURegister> gpu) {
         System.out.println("Displaying all GPUs...\n");
 
         for (GPURegister displayGpu : gpu) {
