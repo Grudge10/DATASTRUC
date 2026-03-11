@@ -20,70 +20,27 @@ public class GPURegister {
     }
 
     public static void start(Scanner input) {
-        List<GPURegister> gpuList = loadList();
+        List<GPURegister> gpuArray = loadArray();
 
-        boolean userHasNotExited = true;
-        while (userHasNotExited) {
-            System.out.print("""
+        System.out.print("""
 
-                     ______________________________________
-                    |                                      |
-                    |   LIAM'S SUPERMALL GPU REGISTRATION  |
-                    |______________________________________|
-                     ______________________________________
-                    |                                      |
-                    | OPTIONS:                             |
-                    | [1] Add GPU                          |
-                    | [2] Search for GPU                   |
-                    | [3] Edit GPU Info                    |
-                    | [4] Delete GPU                       |
-                    | [5] Sort GPU                         |
-                    | [6] List GPUs                        |
-                    | [0] Exit                             |
-                    |______________________________________|
+                 ______________________________________
+                |                                      |
+                |   LIAM'S SUPERMALL GPU REGISTRATION  |
+                |           (Currently WIP!)           |
+                |______________________________________|
 
-                    """);
+                """);
 
-            int choice = InputMethods.inputInt("Choice: ", input, 0, 6);
-            System.out.println();
-
-            switch (choice) {
-                case 0:
-                    userHasNotExited = false;
-                    break;
-                case 1:
-                    System.out.println("Adding GPU...\n");
-                    System.out.println("Done!");
-                    break;
-                case 2:
-                    System.out.println("Searching for GPU...\n");
-                    System.out.println("Done!");
-                    break;
-                case 3:
-                    System.out.println("Editing GPU Info...\n");
-                    System.out.println("Done!");
-                    break;
-                case 4:
-                    System.out.println("Deleting GPU...\n");
-                    System.out.println("Done!");
-                    break;
-                case 5:
-                    System.out.println("Sorting GPU");
-                    System.out.println("Done!");
-                    break;
-                case 6:
-                    displayList(gpuList);
-                    break;
-            }
-        }
+        displayArray(gpuArray);
 
         System.out.println("\nReturning to main menu...\n");
     }
 
-    public static List<GPURegister> loadList() {
+    public static List<GPURegister> loadArray() {
         System.out.println("\nLoading GPU Array...");
 
-        List<GPURegister> gpuList = new ArrayList<>();
+        List<GPURegister> gpuArray = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
             String name;
@@ -93,17 +50,16 @@ public class GPURegister {
                 int watts = Integer.parseInt(reader.readLine());
                 double price = Double.parseDouble(reader.readLine());
 
-                GPURegister loadGPU = new GPURegister(name, brand, vram, watts, price);
-                gpuList.add(loadGPU);
+                gpuArray.add(new GPURegister(name, brand, vram, watts, price));
             }
         } catch (IOException e) {
             System.out.println("Error filling array...");
         }
 
-        return gpuList;
+        return gpuArray;
     }
 
-    public static void displayList(List<GPURegister> gpu) {
+    public static void displayArray(GPURegister[] gpu) {
         System.out.println("Displaying all GPUs...\n");
 
         for (GPURegister displayGpu : gpu) {
