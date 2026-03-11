@@ -1,63 +1,90 @@
 package midterms.Week1;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-public class Grocery {
+public class GPURegister {
+    public String modelName, brand;
+    public int vram, watts;
+    public double price;
+
+    public GPURegister() {
+    }
+
+    public GPURegister(String modelName, String brand, int vram, int watts, double price) {
+        this.modelName = modelName;
+        this.brand = brand;
+        this.vram = vram;
+        this.watts = watts;
+        this.price = price;
+    }
+
     public static void start(Scanner input) {
-        double dQty, dBill, dPrice, dTotal, dPay, dChange;
-        String strProdName;
-        boolean anotherProduct, anotherCustomer;
+        GPURegister[] gpuArray = loadArray();
 
-        do {
-            dBill = 0;
-            StringBuilder receipt = new StringBuilder();
-            receipt.append(String.format("\n%-15s %-10s %-10s %-10s\n", "ITEM", "QTY", "PRICE", "TOTAL"));
-            receipt.append("------------------------------------------------------------\n");
+        System.out.print("""
 
-            System.out.print("""
-                
                  ______________________________________
                 |                                      |
-                |     LIAM'S SUPERMALL GROCERY         |
-                |         DEPARTMENT STORE             |
+                |   LIAM'S SUPERMALL GPU REGISTRATION  |
+                |           (Currently WIP!)           |
                 |______________________________________|
-                
+
                 """);
 
-            do {
-                System.out.println("\n--- Enter Item Details ---");
-                strProdName = InputMethods.inputString("Product Name: ", input, 15);
-                dPrice = InputMethods.inputDouble("Price: ", input);
-                dQty = InputMethods.inputDouble("Quantity: ", input, 1);
-
-                dTotal = dQty * dPrice;
-                dBill = dBill + dTotal;
-
-                receipt.append(String.format("%-15s %-10.2f %-10.2f %-10.2f\n", strProdName, dQty, dPrice, dTotal));
-
-                System.out.printf("Current Item Total: %.2f%n", dTotal);
-
-                anotherProduct = InputMethods.yesOrNo("Another product? (Y/N): ", input);
-            } while (anotherProduct);
-
-            System.out.println("\n======================= FINAL RECEIPT ======================");
-            System.out.print(receipt.toString());
-            System.out.println("------------------------------------------------------------");
-            System.out.printf("%-37s %.2f\n", "GRAND TOTAL:", dBill);
-            System.out.println("============================================================\n");
-
-            dPay = InputMethods.inputDouble("Payment Amount: ", input, dBill);
-
-            dChange = dPay - dBill;
-
-            System.out.println("\n-----------------------------------");
-            System.out.printf("CHANGE: %.2f%n", dChange);
-            System.out.println("Thank you for shopping!");
-            System.out.println("-----------------------------------");
-
-            anotherCustomer = InputMethods.yesOrNo("\nAnother customer (Y/N)? ", input);
-        } while (anotherCustomer);
+        displayArray(gpuArray);
 
         System.out.println("\nReturning to main menu...\n");
+    }
+
+    public static GPURegister[] loadArray() {
+        System.out.println("\nLoading GPU Array...");
+
+        int totalGpus = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
+            while (reader.readLine() != null) {
+                totalGpus++;
+            }
+        } catch (IOException e) {
+            System.out.println("Error counting file...");
+        }
+
+        int size = totalGpus / 5;
+
+        GPURegister[] gpuArray = new GPURegister[size];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
+            for (int i = 0; i < size; i++) {
+                String name = reader.readLine();
+                String brand = reader.readLine();
+                int vram = Integer.parseInt(reader.readLine());
+                int watts = Integer.parseInt(reader.readLine());
+                double price = Double.parseDouble(reader.readLine());
+
+                gpuArray[i] = new GPURegister(name, brand, vram, watts, price);
+            }
+        } catch (IOException e) {
+            System.out.println("Error filling array...");
+        }
+
+        return gpuArray;
+    }
+
+    public static void displayArray(GPURegister[] gpu) {
+        System.out.println("Displaying all GPUs...\n");
+
+        for (GPURegister displayGpu : gpu) {
+            System.out.printf("""
+                     ______________________________________
+                    |                                      |
+                    | Name:  %-30s|
+                    | Brand: %-30s|
+                    | Vram:  %-30d|
+                    | Watts: %-30d|
+                    | Price: %-30.2f|
+                    |______________________________________|
+                    """, displayGpu.modelName, displayGpu.brand, displayGpu.vram, displayGpu.watts, displayGpu.price);
+        }
     }
 }
