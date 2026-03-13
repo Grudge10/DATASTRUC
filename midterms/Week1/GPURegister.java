@@ -52,8 +52,7 @@ public class GPURegister {
                     userHasNotExited = false;
                     break;
                 case 1:
-                    System.out.println("Adding GPU...\n");
-                    System.out.println("Done!");
+                    addMenu(gpuList, input);
                     break;
                 case 2:
                     System.out.println("Searching for GPU...\n");
@@ -100,6 +99,44 @@ public class GPURegister {
         }
 
         return gpuList;
+    }
+
+    public static void addMenu(List<GPURegister> gpuList, Scanner input) {
+        System.out.println("""
+
+                 ______________________________________
+                |                                      |
+                | [1] Add to front                     |
+                | [2] Add to middle                    |
+                | [3] Add to end                       |
+                |______________________________________|
+                """);
+
+        int choice = InputMethods.inputInt("Choice: ", input, 1, 3);
+
+        String modelName = InputMethods.inputString("Model Name: ", input);
+        String brand = InputMethods.inputString("Brand: ", input);
+        int vram = InputMethods.inputInt("Vram: ", input, 0);
+        int watts = InputMethods.inputInt("Watts: ", input, 0);
+        double price = InputMethods.inputDouble("Price: ", input, 0);
+
+        GPURegister gpu = new GPURegister(modelName, brand, vram, watts, price);
+
+        System.out.println("\nAdding GPU...");
+
+        switch (choice) {
+            case 1:
+                gpuList.add(0, gpu);
+                break;
+            case 2:
+                gpuList.add(gpuList.size() / 2, gpu);
+                break;
+            case 3:
+                gpuList.add(gpu);
+                break;
+        }
+
+        System.out.println("\nGPU Added!!!");
     }
 
     public static void displayList(List<GPURegister> gpu) {
