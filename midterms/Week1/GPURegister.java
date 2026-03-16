@@ -155,4 +155,33 @@ public class GPURegister {
                     """, displayGpu.modelName, displayGpu.brand, displayGpu.vram, displayGpu.watts, displayGpu.price);
         }
     }
+
+    public static void searchGPU(Scanner input, List<GPURegister> gpuList) {
+        String searching = InputMethods.inputString("What are you searching for?: ", input);
+
+        GPURegister searchedGPU = null;
+        for (GPURegister gpu : gpuList) {
+            if (searching.equalsIgnoreCase(gpu.modelName)) {
+                searchedGPU = gpu;
+                break;
+            }
+        }
+
+        if (searchedGPU != null) {
+            System.out.printf("""
+                    GPU found!
+                     ______________________________________
+                    |                                      |
+                    | Name:  %-30s|
+                    | Brand: %-30s|
+                    | Vram:  %-30d|
+                    | Watts: %-30d|
+                    | Price: %-30.2f|
+                    |______________________________________|
+                    """, searchedGPU.modelName, searchedGPU.brand, searchedGPU.vram, searchedGPU.watts,
+                    searchedGPU.price);
+        } else {
+            System.out.println("GPU does not exist!");
+        }
+    }
 }
