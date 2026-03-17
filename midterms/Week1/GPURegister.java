@@ -59,8 +59,7 @@ public class GPURegister {
                     searchGPU(gpuList, input);
                     break;
                 case 3:
-                    System.out.println("Editing GPU Info...\n");
-                    System.out.println("Done!");
+                    editMenu(gpuList, input);
                     break;
                 case 4:
                     System.out.println("Deleting GPU...\n");
@@ -195,13 +194,36 @@ public class GPURegister {
 
         GPURegister gpu = gpuList.get(index);
 
-        System.out.println("Current details: " + gpu.modelName);
+        System.out.printf("""
+                     ______________________________________
+                    |                                      |
+                    | index: %-30d|
+                    | Name:  %-30s|
+                    | Brand: %-30s|
+                    | Vram:  %-30d|
+                    | Watts: %-30d|
+                    | Price: %-30.2f|
+                    |______________________________________|
+                    """, index, gpu.modelName, gpu.brand, gpu.vram, gpu.watts,
+                    gpu.price);
 
         if (InputMethods.yesOrNo("Edit this GPU? (Y/N): ", input)) {
-            
+            String newName = InputMethods.inputString("New Model Name: ", input);
+            String newBrand = InputMethods.inputString("New Brand: ", input);
+            int newVram = InputMethods.inputInt("New Vram: ", input, 0);
+            int newWatts = InputMethods.inputInt("New Watts: ", input, 0);
+            double newPrice = InputMethods.inputDouble("New Price: ", input, 0);
+
+            gpu.modelName = newName;
+            gpu.brand = newBrand;
+            gpu.vram = newVram;
+            gpu.watts = newWatts;
+            gpu.price = newPrice;
 
             saveList(gpuList);
             System.out.println("GPU updated!");
+        } else {
+            System.out.println("Edit Cancelled...");
         }
     }
 
@@ -214,17 +236,15 @@ public class GPURegister {
             System.out.printf("""
                      ______________________________________
                     |                                      |
+                    | index: [%d]                          |
                     | Name:  %-30s|
                     | Brand: %-30s|
                     | Vram:  %-30d|
                     | Watts: %-30d|
                     | Price: %-30.2f|
                     |______________________________________|
-                    """, displayGPU.modelName, displayGPU.brand, displayGPU.vram, displayGPU.watts, displayGPU.price);
-
-        }
-
-        for (GPURegister displayGpu : gpuList) {
+                    """, i, displayGPU.modelName, displayGPU.brand, displayGPU.vram, displayGPU.watts,
+                    displayGPU.price);
 
         }
     }
