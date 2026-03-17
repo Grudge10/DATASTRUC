@@ -102,24 +102,24 @@ public class GPURegister {
     }
 
     public static void saveList(List<GPURegister> gpuList) {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("midterms/Week1/GPU.txt"))) {
-        for (GPURegister gpu : gpuList) {
-            writer.write(gpu.modelName);
-            writer.newLine();
-            writer.write(gpu.brand);
-            writer.newLine();
-            writer.write(String.valueOf(gpu.vram));
-            writer.newLine();
-            writer.write(String.valueOf(gpu.watts));
-            writer.newLine();
-            writer.write(String.valueOf(gpu.price));
-            writer.newLine();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("midterms/Week1/GPU.txt"))) {
+            for (GPURegister gpu : gpuList) {
+                writer.write(gpu.modelName);
+                writer.newLine();
+                writer.write(gpu.brand);
+                writer.newLine();
+                writer.write(String.valueOf(gpu.vram));
+                writer.newLine();
+                writer.write(String.valueOf(gpu.watts));
+                writer.newLine();
+                writer.write(String.valueOf(gpu.price));
+                writer.newLine();
+            }
+            System.out.println("Data saved to file!");
+        } catch (IOException e) {
+            System.out.println("Error saving data...");
         }
-        System.out.println("Data saved to file!");
-    } catch (IOException e) {
-        System.out.println("Error saving data...");
     }
-}
 
     public static void addMenu(List<GPURegister> gpuList, Scanner input) {
         System.out.println("""
@@ -188,10 +188,29 @@ public class GPURegister {
         }
     }
 
-    public static void displayList(List<GPURegister> gpu) {
+    public static void editMenu(List<GPURegister> gpuList, Scanner input) {
+        displayList(gpuList);
+
+        int index = InputMethods.inputInt("Enter index to edit: ", input, 0, gpuList.size() - 1);
+
+        GPURegister gpu = gpuList.get(index);
+
+        System.out.println("Current details: " + gpu.modelName);
+
+        if (InputMethods.yesOrNo("Edit this GPU? (Y/N): ", input)) {
+            
+
+            saveList(gpuList);
+            System.out.println("GPU updated!");
+        }
+    }
+
+    public static void displayList(List<GPURegister> gpuList) {
         System.out.println("Displaying all GPUs...\n");
 
-        for (GPURegister displayGpu : gpu) {
+        for (int i = 0; i < gpuList.size(); i++) {
+            GPURegister displayGPU = gpuList.get(i);
+
             System.out.printf("""
                      ______________________________________
                     |                                      |
@@ -201,7 +220,12 @@ public class GPURegister {
                     | Watts: %-30d|
                     | Price: %-30.2f|
                     |______________________________________|
-                    """, displayGpu.modelName, displayGpu.brand, displayGpu.vram, displayGpu.watts, displayGpu.price);
+                    """, displayGPU.modelName, displayGPU.brand, displayGPU.vram, displayGPU.watts, displayGPU.price);
+
+        }
+
+        for (GPURegister displayGpu : gpuList) {
+
         }
     }
 }
