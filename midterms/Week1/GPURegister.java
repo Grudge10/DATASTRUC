@@ -188,6 +188,11 @@ public class GPURegister {
     }
 
     public static void editMenu(List<GPURegister> gpuList, Scanner input) {
+        if (gpuList.isEmpty()) {
+            System.out.println("The registry is empty! Nothing to edit...");
+            return;
+        }
+
         displayList(gpuList);
 
         int index = InputMethods.inputInt("Enter index to edit: ", input, 0, gpuList.size() - 1);
@@ -195,17 +200,17 @@ public class GPURegister {
         GPURegister gpu = gpuList.get(index);
 
         System.out.printf("""
-                     ______________________________________
-                    |                                      |
-                    | index: %-30d|
-                    | Name:  %-30s|
-                    | Brand: %-30s|
-                    | Vram:  %-30d|
-                    | Watts: %-30d|
-                    | Price: %-30.2f|
-                    |______________________________________|
-                    """, index, gpu.modelName, gpu.brand, gpu.vram, gpu.watts,
-                    gpu.price);
+                 ______________________________________
+                |                                      |
+                | index: %-30d|
+                | Name:  %-30s|
+                | Brand: %-30s|
+                | Vram:  %-30d|
+                | Watts: %-30d|
+                | Price: %-30.2f|
+                |______________________________________|
+                """, index, gpu.modelName, gpu.brand, gpu.vram, gpu.watts,
+                gpu.price);
 
         if (InputMethods.yesOrNo("Edit this GPU? (Y/N): ", input)) {
             String newName = InputMethods.inputString("New Model Name: ", input);
