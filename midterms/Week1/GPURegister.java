@@ -56,8 +56,7 @@ public class GPURegister {
                     addMenu(gpuList, input);
                     break;
                 case 2:
-                    System.out.println("Searching for GPU...\n");
-                    System.out.println("Done!");
+                    searchGPU(gpuList, input);
                     break;
                 case 3:
                     System.out.println("Editing GPU Info...\n");
@@ -158,6 +157,35 @@ public class GPURegister {
         }
 
         System.out.println("\nGPU Added!!!");
+    }
+
+    public static void searchGPU(List<GPURegister> gpuList, Scanner input) {
+        String searching = InputMethods.inputString("What are you searching for?: ", input);
+
+        GPURegister searchedGPU = null;
+        for (GPURegister gpu : gpuList) {
+            if (searching.equalsIgnoreCase(gpu.modelName)) {
+                searchedGPU = gpu;
+                break;
+            }
+        }
+
+        if (searchedGPU != null) {
+            System.out.printf("""
+                    GPU found!
+                     ______________________________________
+                    |                                      |
+                    | Name:  %-30s|
+                    | Brand: %-30s|
+                    | Vram:  %-30d|
+                    | Watts: %-30d|
+                    | Price: %-30.2f|
+                    |______________________________________|
+                    """, searchedGPU.modelName, searchedGPU.brand, searchedGPU.vram, searchedGPU.watts,
+                    searchedGPU.price);
+        } else {
+            System.out.println("GPU does not exist!");
+        }
     }
 
     public static void displayList(List<GPURegister> gpu) {
