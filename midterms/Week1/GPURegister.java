@@ -62,8 +62,7 @@ public class GPURegister {
                     editMenu(gpuList, input);
                     break;
                 case 4:
-                    System.out.println("Deleting GPU...\n");
-                    System.out.println("Done!");
+                    deleteMenu(gpuList, input);
                     break;
                 case 5:
                     System.out.println("Sorting GPU");
@@ -229,6 +228,29 @@ public class GPURegister {
             System.out.println("GPU updated!");
         } else {
             System.out.println("Edit Cancelled...");
+        }
+    }
+
+    public static void deleteMenu(List<GPURegister> gpuList, Scanner input) {
+        if (gpuList.isEmpty()) {
+            System.out.println("The registry is empty! Nothing to delete...");
+            return;
+        }
+
+        displayList(gpuList);
+
+        int index = InputMethods.inputInt("Enter index to delete: ", input, 0, gpuList.size() - 1);
+
+        GPURegister gpu = gpuList.get(index);
+        System.out.println("You are about to delete: " + gpu.modelName);
+
+        if (InputMethods.yesOrNo("Are you sure you want to delete this GPU? (Y/N): ", input)) {
+            gpuList.remove(index);
+
+            saveList(gpuList);
+            System.out.println("GPU Deleted!");
+        } else {
+            System.out.println("Deletion Cancelled...");
         }
     }
 
