@@ -49,13 +49,15 @@ public class GPURegister {
 
             switch (choice) {
                 case 0:
+                    saveList(gpuList);
                     userHasNotExited = false;
                     break;
                 case 1:
                     addMenu(gpuList, input);
                     break;
                 case 2:
-                    searchGPU(gpuList, input);
+                    System.out.println("Searching for GPU...\n");
+                    System.out.println("Done!");
                     break;
                 case 3:
                     System.out.println("Editing GPU Info...\n");
@@ -100,34 +102,25 @@ public class GPURegister {
         return gpuList;
     }
 
-    public static void searchGPU(List<GPURegister> gpuList, Scanner input) {
-        String searching = InputMethods.inputString("What are you searching for?: ", input);
-
-        GPURegister searchedGPU = null;
+    public static void saveList(List<GPURegister> gpuList) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("midterms/Week1/GPU.txt"))) {
         for (GPURegister gpu : gpuList) {
-            if (searching.equalsIgnoreCase(gpu.modelName)) {
-                searchedGPU = gpu;
-                break;
-            }
+            writer.write(gpu.modelName);
+            writer.newLine();
+            writer.write(gpu.brand);
+            writer.newLine();
+            writer.write(String.valueOf(gpu.vram));
+            writer.newLine();
+            writer.write(String.valueOf(gpu.watts));
+            writer.newLine();
+            writer.write(String.valueOf(gpu.price));
+            writer.newLine();
         }
-
-        if (searchedGPU != null) {
-            System.out.printf("""
-                    GPU found!
-                     ______________________________________
-                    |                                      |
-                    | Name:  %-30s|
-                    | Brand: %-30s|
-                    | Vram:  %-30d|
-                    | Watts: %-30d|
-                    | Price: %-30.2f|
-                    |______________________________________|
-                    """, searchedGPU.modelName, searchedGPU.brand, searchedGPU.vram, searchedGPU.watts,
-                    searchedGPU.price);
-        } else {
-            System.out.println("GPU does not exist!");
-        }
+        System.out.println("Data saved to file!");
+    } catch (IOException e) {
+        System.out.println("Error saving data...");
     }
+}
 
     public static void addMenu(List<GPURegister> gpuList, Scanner input) {
         System.out.println("""
