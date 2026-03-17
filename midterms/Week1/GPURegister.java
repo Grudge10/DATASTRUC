@@ -65,8 +65,7 @@ public class GPURegister {
                     deleteMenu(gpuList, input);
                     break;
                 case 5:
-                    System.out.println("Sorting GPU");
-                    System.out.println("Done!");
+                    sortMenu(gpuList, input);
                     break;
                 case 6:
                     displayList(gpuList);
@@ -252,6 +251,48 @@ public class GPURegister {
         } else {
             System.out.println("Deletion Cancelled...");
         }
+    }
+
+    public static void sortMenu(List<GPURegister> gpuList, Scanner input) {
+        if (gpuList.isEmpty()) {
+            System.out.println("Nothing to sort!");
+            return;
+        }
+
+        System.out.print("""
+                 ______________________________________
+                |                                      |
+                | [1] Ascending Order                  |
+                | [2] Descending Order                 |
+                |______________________________________|
+
+                """);
+
+        int choice = InputMethods.inputInt("Choice: ", input, 1, 2);
+
+        for (int i = 0; i < gpuList.size() - 1; i++) {
+            for (int j = 0; j < gpuList.size() - i - 1; j++) {
+
+                GPURegister left = gpuList.get(j);
+                GPURegister right = gpuList.get(j + 1);
+
+                boolean shouldSwap = false;
+
+                if (choice == 1) {
+                    shouldSwap =  left.price > right.price;
+                } else {
+                    shouldSwap = left.price < right.price;
+                }
+
+                if (shouldSwap) {
+                    gpuList.set(j, right);
+                    gpuList.set(j + 1, left);
+                }
+            }
+        }
+
+        System.out.println("GPU list sorted!");
+        saveList(gpuList);
     }
 
     public static void displayList(List<GPURegister> gpuList) {
