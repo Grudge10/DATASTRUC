@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.print("""
+        InputMethods.openTranscript("midterms/Week1/output.txt");
+
+        InputMethods.print("""
 
                  ______________________________________
                 |                                      |
@@ -14,7 +16,7 @@ public class Main {
                         """);
 
         while (true) {
-            System.out.print("""
+            InputMethods.print("""
                      ______________________________________
                     |                                      |
                     |  MAIN MENU:                          |
@@ -30,21 +32,22 @@ public class Main {
                     "Choice: ", input, 0, 3);
 
             if (choice == 1) {
-                System.out.println("\nLoading Grocery Department Store...");
+                InputMethods.println("\nLoading Grocery Department Store...");
                 Grocery.start(input);
             } else if (choice == 2) {
-                System.out.println("\nLoading Movie Rental Registration...");
+                InputMethods.println("\nLoading Movie Rental Registration...");
                 Movie.start(input);
             } else if (choice == 3) {
-                System.out.println("\nLoading GPU Registration...");
+                InputMethods.println("\nLoading GPU Registration...");
                 GPURegister.start(input);
             } else {
-                System.out.println("\nThank you for coming to Liam's Supermall! GOODBYE!!!");
+                InputMethods.println("\nThank you for coming to Liam's Supermall! GOODBYE!!!");
                 break;
             }
         }
 
         input.close();
+        InputMethods.closeTranscript();
     }
 
     public static Scanner input = new Scanner(System.in);

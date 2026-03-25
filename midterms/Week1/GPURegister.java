@@ -4,9 +4,11 @@ import java.io.*;
 import java.util.*;
 
 public class GPURegister {
-    public String modelName, brand;
-    public int vram, watts;
-    public double price;
+    private String modelName;
+    private String brand;
+    private int vram;
+    private int watts;
+    private double price;
 
     public GPURegister() {
     }
@@ -24,7 +26,7 @@ public class GPURegister {
 
         boolean userHasNotExited = true;
         while (userHasNotExited) {
-            System.out.print("""
+            InputMethods.print("""
 
                      ______________________________________
                     |                                      |
@@ -45,7 +47,7 @@ public class GPURegister {
                     """);
 
             int choice = InputMethods.inputInt("Choice: ", input, 0, 6);
-            System.out.println();
+            InputMethods.println("");
 
             switch (choice) {
                 case 0:
@@ -73,11 +75,11 @@ public class GPURegister {
             }
         }
 
-        System.out.println("\nReturning to main menu...\n");
+        InputMethods.println("\nReturning to main menu...\n");
     }
 
     public static List<GPURegister> loadList() {
-        System.out.println("\nLoading GPU Array...");
+        InputMethods.println("\nLoading GPU Array...");
 
         List<GPURegister> gpuList = new ArrayList<>();
 
@@ -91,8 +93,8 @@ public class GPURegister {
 
                 gpuList.add(new GPURegister(name, brand, vram, watts, price));
             }
-        } catch (IOException e) {
-            System.out.println("Error filling list...");
+        } catch (IOException | NumberFormatException e) {
+            InputMethods.println("Error filling list...");
         }
 
         return gpuList;
@@ -112,14 +114,14 @@ public class GPURegister {
                 writer.write(String.valueOf(gpu.price));
                 writer.newLine();
             }
-            System.out.println("Data saved to file!");
+            InputMethods.println("Data saved to file!");
         } catch (IOException e) {
-            System.out.println("Error saving data...");
+            InputMethods.println("Error saving data...");
         }
     }
 
     public static void addMenu(List<GPURegister> gpuList, Scanner input) {
-        System.out.println("""
+        InputMethods.println("""
 
                  ______________________________________
                 |                                      |
@@ -139,7 +141,7 @@ public class GPURegister {
 
         GPURegister gpu = new GPURegister(modelName, brand, vram, watts, price);
 
-        System.out.println("\nAdding GPU...");
+        InputMethods.println("\nAdding GPU...");
 
         switch (choice) {
             case 1:
@@ -153,7 +155,7 @@ public class GPURegister {
                 break;
         }
 
-        System.out.println("\nGPU Added!!!");
+        InputMethods.println("\nGPU Added!!!");
     }
 
     public static void searchGPU(List<GPURegister> gpuList, Scanner input) {
@@ -168,7 +170,7 @@ public class GPURegister {
         }
 
         if (searchedGPU != null) {
-            System.out.printf("""
+            InputMethods.print(String.format("""
                     GPU found!
                      ______________________________________
                     |                                      |
@@ -179,15 +181,15 @@ public class GPURegister {
                     | Price: %-30.2f|
                     |______________________________________|
                     """, searchedGPU.modelName, searchedGPU.brand, searchedGPU.vram, searchedGPU.watts,
-                    searchedGPU.price);
+                    searchedGPU.price));
         } else {
-            System.out.println("GPU does not exist!");
+            InputMethods.println("GPU does not exist!");
         }
     }
 
     public static void editMenu(List<GPURegister> gpuList, Scanner input) {
         if (gpuList.isEmpty()) {
-            System.out.println("The registry is empty! Nothing to edit...");
+            InputMethods.println("The registry is empty! Nothing to edit...");
             return;
         }
 
@@ -197,7 +199,7 @@ public class GPURegister {
 
         GPURegister gpu = gpuList.get(index);
 
-        System.out.printf("""
+        InputMethods.print(String.format("""
                  ______________________________________
                 |                                      |
                 | index: %-30d|
@@ -208,7 +210,7 @@ public class GPURegister {
                 | Price: %-30.2f|
                 |______________________________________|
                 """, index, gpu.modelName, gpu.brand, gpu.vram, gpu.watts,
-                gpu.price);
+                gpu.price));
 
         if (InputMethods.yesOrNo("Edit this GPU? (Y/N): ", input)) {
             String newName = InputMethods.inputString("New Model Name: ", input);
@@ -224,15 +226,15 @@ public class GPURegister {
             gpu.price = newPrice;
 
             saveList(gpuList);
-            System.out.println("GPU updated!");
+            InputMethods.println("GPU updated!");
         } else {
-            System.out.println("Edit Cancelled...");
+            InputMethods.println("Edit Cancelled...");
         }
     }
 
     public static void deleteMenu(List<GPURegister> gpuList, Scanner input) {
         if (gpuList.isEmpty()) {
-            System.out.println("The registry is empty! Nothing to delete...");
+            InputMethods.println("The registry is empty! Nothing to delete...");
             return;
         }
 
@@ -241,25 +243,25 @@ public class GPURegister {
         int index = InputMethods.inputInt("Enter index to delete: ", input, 0, gpuList.size() - 1);
 
         GPURegister gpu = gpuList.get(index);
-        System.out.println("You are about to delete: " + gpu.modelName);
+        InputMethods.println("You are about to delete: " + gpu.modelName);
 
         if (InputMethods.yesOrNo("Are you sure you want to delete this GPU? (Y/N): ", input)) {
             gpuList.remove(index);
 
             saveList(gpuList);
-            System.out.println("GPU Deleted!");
+            InputMethods.println("GPU Deleted!");
         } else {
-            System.out.println("Deletion Cancelled...");
+            InputMethods.println("Deletion Cancelled...");
         }
     }
 
     public static void sortMenu(List<GPURegister> gpuList, Scanner input) {
         if (gpuList.isEmpty()) {
-            System.out.println("Nothing to sort!");
+            InputMethods.println("Nothing to sort!");
             return;
         }
 
-        System.out.print("""
+        InputMethods.print("""
                  ______________________________________
                 |                                      |
                 | [1] Ascending Order                  |
@@ -279,7 +281,7 @@ public class GPURegister {
                 boolean shouldSwap = false;
 
                 if (choice == 1) {
-                    shouldSwap =  left.price > right.price;
+                    shouldSwap = left.price > right.price;
                 } else {
                     shouldSwap = left.price < right.price;
                 }
@@ -291,20 +293,20 @@ public class GPURegister {
             }
         }
 
-        System.out.println("GPU list sorted!");
+        InputMethods.println("GPU list sorted!");
         saveList(gpuList);
     }
 
     public static void displayList(List<GPURegister> gpuList) {
-        System.out.println("Displaying all GPUs...\n");
+        InputMethods.println("Displaying all GPUs...\n");
 
         for (int i = 0; i < gpuList.size(); i++) {
             GPURegister displayGPU = gpuList.get(i);
 
-            System.out.printf("""
+            InputMethods.print(String.format("""
                      ______________________________________
                     |                                      |
-                    | index: [%d]                          |
+                    | index: %-30d|
                     | Name:  %-30s|
                     | Brand: %-30s|
                     | Vram:  %-30d|
@@ -312,7 +314,7 @@ public class GPURegister {
                     | Price: %-30.2f|
                     |______________________________________|
                     """, i, displayGPU.modelName, displayGPU.brand, displayGPU.vram, displayGPU.watts,
-                    displayGPU.price);
+                    displayGPU.price));
 
         }
     }
