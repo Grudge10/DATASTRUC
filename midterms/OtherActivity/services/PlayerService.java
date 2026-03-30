@@ -59,11 +59,21 @@ public class PlayerService {
         }
     }
 
-    public static void signIn() {
-
+    public static Player signIn(List<Player> playerList) {
+        String username;
+        while (true) {
+            username = InputMethods.inputString("Username: ");
+            
+            for (Player player : playerList) {
+                if (username.equals(player.getUsername())) {
+                    
+                }
+            }
+        }
     }
 
-    public static void signUp() {
+    public static void signUp(List<Player> playerList) {
+        System.out.println("Lets sign you up!!!");
 
     }
 }
