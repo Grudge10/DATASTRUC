@@ -42,7 +42,18 @@ public class PlayerService {
 
     public static void saveUsers(List<Player> playerList) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("midterms/OtherActivity/data/Players.txt"))) {
-            
+            for (Player player : playerList) {
+                StringBuilder s = new StringBuilder();
+
+                s.append(player.getUsername())
+                        .append(",")
+                        .append(player.getPassword())
+                        .append(",")
+                        .append(player.getHighestScore());
+
+                writer.write(s.toString());
+                writer.newLine();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
