@@ -61,12 +61,13 @@ public class PlayerService {
 
     public static Player signIn(List<Player> playerList) {
         String username;
+
         while (true) {
             username = InputMethods.inputString("Username: ");
-            
+
             for (Player player : playerList) {
                 if (username.equals(player.getUsername())) {
-                    
+                    break;
                 }
             }
         }

@@ -1,0 +1,15 @@
+What is the average time complexity of a HashMap lookup?,O(1),O(n),O(log n),1
+Which data structure follows the LIFO principle?,Queue,Array,Stack,3
+What is the starting index of a Java array?,1,0,-1,2
+Which data structure follows the FIFO principle?,Stack,Queue,LinkedList,2
+What is the time complexity of adding to an ArrayList?,O(1),O(n),O(n^2),1
+In a Binary Search Tree what is on the left side?,Larger values,Equal values,Smaller values,3
+Which structure is best for retrieving data via unique keys?,ArrayList,HashMap,Stack,2
+What happens if you access an index outside array bounds?,Returns null,Crashes program,Returns zero,2
+Which method adds an element to an ArrayList?,add(),push(),append(),1
+What is the Big-O complexity of a Linear Search?,O(log n),O(n),O(1),2
+Which data structure is used to implement recursion?,Queue,Stack,HashMap,2
+Which method removes the top element of a Stack?,remove(),pop(),dequeue(),2
+In Java what is the parent class of all classes?,Main,String,Object,3
+What is the time complexity of Binary Search?,O(n),O(log n),O(n^2),2
+Which structure links elements using references?,Array,LinkedList,HashMap,2

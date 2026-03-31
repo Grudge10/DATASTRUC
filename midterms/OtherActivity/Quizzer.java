@@ -8,7 +8,7 @@ import midterms.OtherActivity.services.InputMethods;
 import midterms.OtherActivity.services.PlayerService;
 
 public class Quizzer {
-    private static  List<Player> playerList = new ArrayList<>();
+    private static List<Player> playerList = new ArrayList<>();
 
     public static void main(String[] args) {
         playerList = PlayerService.loadUsers();
@@ -18,8 +18,8 @@ public class Quizzer {
             System.out.println("""
                      ____________________________________________________
                     |                                                    |
-                    | [1] Sign In                                        |
-                    | [2] Sign Up                                        |
+                    | [1] Player Registration                            |
+                    | [2] Play                                           |
                     | [0] Exit                                           |
                     |____________________________________________________|
                     """);
@@ -27,14 +27,13 @@ public class Quizzer {
 
             switch (choice) {
                 case 1 -> {
-                    PlayerService.signIn();
+                    System.out.println("Player has registered!");
                 }
                 case 2 -> {
-                    PlayerService.signUp();
-                    PlayerService.saveUsers(playerList);
+                    System.out.println("Playing...(WIP)");
                 }
                 case 0 -> {
-                    PlayerService.saveUsers(playerList);
+                    System.out.println("Exiting the program...");
                     userHasNotExited = false;
                 }
             }
