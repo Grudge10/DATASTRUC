@@ -67,5 +67,4 @@ public class Question {
                 C. %s
                 """, question, a, b, c);
     }
-
 }
