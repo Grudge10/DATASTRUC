@@ -10,8 +10,8 @@ public class Quizzer {
     public static void main(String[] args) {
         List<Question> questionList = QuizService.loadQuestions();
 
-        boolean userHasNotExited = true;
-        while (userHasNotExited) {
+        boolean isRunning = true;
+        while (isRunning) {
             System.out.println("""
                      ____________________________________________________
                     |                                                    |
@@ -29,11 +29,11 @@ public class Quizzer {
                 case 2 -> {
                     List<Question> selectedQuestions = QuizService.selectQuestions(questionList);
                     int score = QuizService.playGame(selectedQuestions);
-                    System.out.printf("your score is %d out of %d\n", score, 15);
+                    System.out.printf("your score is %d out of %d\n", score, selectedQuestions.size());
                 }
                 case 0 -> {
                     System.out.println("Exiting the program...");
-                    userHasNotExited = false;
+                    isRunning = false;
                 }
             }
         }

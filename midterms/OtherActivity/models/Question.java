@@ -2,19 +2,19 @@ package midterms.OtherActivity.models;
 
 public class Question {
     private String question;
-    private String a;
-    private String b;
-    private String c;
+    private String optionA;
+    private String optionB;
+    private String optionC;
     private int answer;
 
     public Question() {
     }
 
-    public Question(String question, String a, String b, String c, int answer) {
+    public Question(String question, String optionA, String optionB, String optionC, int answer) {
         this.question = question;
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
         this.answer = answer;
     }
 
@@ -22,16 +22,16 @@ public class Question {
         return question;
     }
 
-    public String getA() {
-        return a;
+    public String getOptionA() {
+        return optionA;
     }
 
-    public String getB() {
-        return b;
+    public String getOptionB() {
+        return optionB;
     }
 
-    public String getC() {
-        return c;
+    public String getOptionC() {
+        return optionC;
     }
 
     public int getAnswer() {
@@ -42,16 +42,16 @@ public class Question {
         this.question = question;
     }
 
-    public void setA(String a) {
-        this.a = a;
+    public void setOptionA(String optionA) {
+        this.optionA = optionA;
     }
 
-    public void setB(String b) {
-        this.b = b;
+    public void setOptionB(String optionB) {
+        this.optionB = optionB;
     }
 
-    public void setC(String c) {
-        this.c = c;
+    public void setOptionC(String optionC) {
+        this.optionC = optionC;
     }
 
     public void setAnswer(int answer) {
@@ -65,6 +65,6 @@ public class Question {
                 [1] %s
                 [2] %s
                 [3] %s
-                """, question, a, b, c);
+                """, question, optionA, optionB, optionC);
     }
 }
