@@ -42,7 +42,7 @@ public class QuizService {
     }
 
     public static List<Question> selectQuestions(List<Question> questionList) {
-        List<Question> newQuestionList = questionList;
+        List<Question> newQuestionList = new ArrayList<>(questionList);
         Random random = new Random();
         for (int i = newQuestionList.size() - 1; i > 0; i--) {
             int j = random.nextInt(i + 1);
