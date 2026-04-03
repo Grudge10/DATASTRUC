@@ -56,4 +56,19 @@ public class QuizService {
         }
         return newQuestionList;
     }
+
+    public static int playGame(List<Question> questionList) {
+        int score = 0;
+
+        for (Question question : questionList) {
+            System.out.println(question);
+            int answer = InputMethods.inputInt("Answer: ", 1, 3);
+
+            if (answer == question.getAnswer()) {
+                score++;
+            }
+        }
+
+        return score;
+    }
 }

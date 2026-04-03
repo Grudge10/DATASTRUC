@@ -62,9 +62,9 @@ public class Question {
     public String toString() {
         return String.format("""
                 %s
-                A. %s
-                B. %s
-                C. %s
+                [1] %s
+                [2] %s
+                [3] %s
                 """, question, a, b, c);
     }
 }
