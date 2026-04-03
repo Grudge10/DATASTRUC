@@ -1,9 +1,5 @@
 package midterms.OtherActivity;
 
-import java.util.List;
-import java.util.Random;
-
-import midterms.OtherActivity.models.Question;
 import midterms.OtherActivity.services.InputMethods;
 
 public class Quizzer {
@@ -32,18 +28,6 @@ public class Quizzer {
                     userHasNotExited = false;
                 }
             }
-        }
-    }
-
-    public static void jumbleQuestions(List<Question> questionList) {
-        Random random = new Random();
-
-        for (int i = questionList.size() - 1; i > 0; i--) {
-            int j = random.nextInt(i + 1);
-
-            Question temp = questionList.get(i);
-            questionList.set(i, questionList.get(j));
-            questionList.set(j, temp);
         }
     }
 }

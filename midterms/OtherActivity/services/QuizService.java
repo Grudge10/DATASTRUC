@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import midterms.OtherActivity.models.Question;
 
@@ -12,7 +13,7 @@ public class QuizService {
     public static List<Question> loadQuestions() {
         List<Question> questionList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("/midterms/OtherActivity/data/Questions.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("midterms/OtherActivity/data/Questions.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -21,7 +22,7 @@ public class QuizService {
                 String a = data[1];
                 String b = data[2];
                 String c = data[3];
-                
+
                 int answer = 0;
                 try {
                     answer = Integer.parseInt(data[4]);
@@ -40,5 +41,19 @@ public class QuizService {
         return questionList;
     }
 
-    public static 
+    public static List<Question> selectQuestions(List<Question> questionList) {
+        Random random = new Random();
+        for (int i = questionList.size() - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            Question temp = questionList.get(i);
+            questionList.set(i, questionList.get(j));
+            questionList.set(j, temp);
+        }
+
+        List<Question> newQuestionList = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            newQuestionList.add(questionList.get(i));
+        }
+        return newQuestionList;
+    }
 }
