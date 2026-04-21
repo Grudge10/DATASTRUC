@@ -11,10 +11,12 @@ import java.util.Stack;
 import finals.theact.models.Question;
 
 public class QuizService {
+    private static final String QUESTION_FILE_PATH = "finals/theact/data/Questions.txt";
+
     public static List<Question> loadQuestions() {
         List<Question> questionList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("finals/theact/data/Questions.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(QUESTION_FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
