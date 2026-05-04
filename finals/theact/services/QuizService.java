@@ -23,6 +23,11 @@ public class QuizService {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
 
+                if (data.length < 5) {
+                    System.out.println("Skipping malformed line: " + line);
+                    continue;
+                }
+
                 String question = data[0];
                 String a = data[1];
                 String b = data[2];
@@ -32,7 +37,8 @@ public class QuizService {
                 try {
                     answer = Integer.parseInt(data[4]);
                 } catch (NumberFormatException e) {
-                    e.printStackTrace();
+                    System.out.println("Skipping line with invalid answer: " + line);
+                    continue;
                 }
 
                 Question loadedQuestion = new Question(question, a, b, c, answer);

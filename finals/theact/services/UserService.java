@@ -22,13 +22,19 @@ public class UserService {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
 
+                if (data.length < 3) {
+                    System.out.println("Skipping malformed line: " + line);
+                    continue;
+                }
+
                 String username = data[0];
                 String password = data[1];
                 int highestScore = 0;
                 try {
                     highestScore = Integer.parseInt(data[2]);
                 } catch (NumberFormatException e) {
-                    e.printStackTrace();
+                    System.out.println("Skipping line with invalid score: " + line);
+                    continue;
                 }
 
                 User loadedUser = new User(username, password, highestScore);
