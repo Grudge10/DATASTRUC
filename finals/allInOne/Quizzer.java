@@ -23,6 +23,7 @@ public class Quizzer {
                         | [1] Logout                                         |
                         | [2] Play                                           |
                         | [3] Manage Question Bank                           |
+                        | [4] Leaderboard                                    |
                         | [0] Exit                                           |
                         |____________________________________________________|
                         """);
@@ -33,11 +34,12 @@ public class Quizzer {
                         | [1] Player Registration                            |
                         | [2] Play                                           |
                         | [3] Manage Question Bank                           |
+                        | [4] Leaderboard                                    |
                         | [0] Exit                                           |
                         |____________________________________________________|
                         """);
             }
-            int choice1 = InputMethods.inputInt("Choice: ", input, 0, 3);
+            int choice1 = InputMethods.inputInt("Choice: ", input, 0, 4);
 
             switch (choice1) {
                 case 1 -> {
@@ -97,6 +99,9 @@ public class Quizzer {
                 }
                 case 3 -> {
                     QuizService.manageQuestionBank(questionList, input);
+                }
+                case 4 -> {
+                    UserService.displayLeaderboard(userList);
                 }
                 case 0 -> {
                     InputMethods.println("Exiting the program...");

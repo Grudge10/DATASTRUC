@@ -117,4 +117,47 @@ public class UserService {
 
         saveUsers(userList);
     }
+
+    public static void displayLeaderboard(List<User> userList) {
+        InputMethods.println("""
+                 ____________________________________________________
+                |                                                    |
+                |                   LEADERBOARD                     |
+                |____________________________________________________|
+                """);
+
+        if (userList.isEmpty()) {
+            InputMethods.println("No players registered yet!");
+            return;
+        }
+
+        List<User> sorted = new ArrayList<>(userList);
+        for (int i = 0; i < sorted.size() - 1; i++) {
+            for (int j = 0; j < sorted.size() - 1 - i; j++) {
+                if (sorted.get(j).getHighestScore() < sorted.get(j + 1).getHighestScore()) {
+                    User temp = sorted.get(j);
+                    sorted.set(j, sorted.get(j + 1));
+                    sorted.set(j + 1, temp);
+                }
+            }
+        }
+
+        String[] medals = { "🥇", "🥈", "🥉" };
+
+        InputMethods.println(String.format("%-6s %-20s %s", "Rank", "Username", "Highest Score"));
+        InputMethods.println("----------------------------------------------");
+
+        for (int i = 0; i < sorted.size(); i++) {
+            User user = sorted.get(i);
+            String rank;
+            if (i < 3) {
+                rank = medals[i] + " #" + (i + 1);
+            } else {
+                rank = "   #" + (i + 1);
+            }
+            InputMethods.println(String.format("%-9s %-20s %d", rank, user.getUsername(), user.getHighestScore()));
+        }
+
+        InputMethods.println("----------------------------------------------");
+    }
 }
