@@ -91,14 +91,18 @@ public class Quizzer {
                         if (score > currentUser.getHighestScore()) {
                             InputMethods.println("NEW HIGH SCORE!");
                             currentUser.setHighestScore(score);
-                            UserService.saveUsers(userList); // Persist the change immediately!
+                            UserService.saveUsers(userList);
                         }
 
                         InputMethods.println(String.format("your score is %d out of %d", score, selectedQuestions.size()));
                     }
                 }
                 case 3 -> {
-                    QuizService.manageQuestionBank(questionList, input);
+                    if (currentUser == null) {
+                        InputMethods.println("ACCESS DENIED: You must Login or Register first");
+                    } else {
+                        QuizService.manageQuestionBank(questionList, input);
+                    }
                 }
                 case 4 -> {
                     UserService.displayLeaderboard(userList);

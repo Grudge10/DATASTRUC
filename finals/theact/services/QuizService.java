@@ -151,8 +151,8 @@ public class QuizService {
 
     public static void saveQuestions(List<Question> questionList) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(QUESTION_FILE_PATH))) {
-            StringBuilder s = new StringBuilder();
             for (Question question : questionList) {
+                StringBuilder s = new StringBuilder();
                 s.append(question.getQuestion())
                         .append(",")
                         .append(question.getOptionA())

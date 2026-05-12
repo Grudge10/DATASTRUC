@@ -94,11 +94,15 @@ public class Quizzer {
                             UserService.saveUsers(userList);
                         }
 
-                        System.out.printf("your score is %d out of %d\n", score, selectedQuestions.size());
+                        System.out.println(String.format("your score is %d out of %d", score, selectedQuestions.size()));
                     }
                 }
                 case 3 -> {
-                    QuizService.manageQuestionBank(questionList);
+                    if (currentUser == null) {
+                        System.out.println("ACCESS DENIED: You must Login or Register first");
+                    } else {
+                        QuizService.manageQuestionBank(questionList);
+                    }
                 }
                 case 4 -> {
                     UserService.displayLeaderboard(userList);

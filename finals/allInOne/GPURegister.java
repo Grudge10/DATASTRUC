@@ -83,7 +83,7 @@ public class GPURegister {
 
         List<GPURegister> gpuList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("midterms/Week1/GPU.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("finals/allInOne/GPU.txt"))) {
             String name;
             while ((name = reader.readLine()) != null) {
                 String brand = reader.readLine();
@@ -101,7 +101,7 @@ public class GPURegister {
     }
 
     public static void saveList(List<GPURegister> gpuList) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("midterms/Week1/GPU.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("finals/allInOne/GPU.txt"))) {
             for (GPURegister gpu : gpuList) {
                 writer.write(gpu.modelName);
                 writer.newLine();

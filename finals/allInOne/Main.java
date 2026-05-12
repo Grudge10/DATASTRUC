@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        InputMethods.openTranscript("midterms/Week1/output.txt");
+        InputMethods.openTranscript("finals/allInOne/output.txt");
 
         InputMethods.print("""
 

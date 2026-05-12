@@ -14,7 +14,7 @@ import finals.allInOne.models.User;
 import finals.allInOne.InputMethods;
 
 public class UserService {
-    private static final String USER_FILE_PATH = "finals/theact/data/Users.txt";
+    private static final String USER_FILE_PATH = "finals/allInOne/data/Users.txt";
 
     public static List<User> loadUsers() {
         List<User> userList = new ArrayList<>();

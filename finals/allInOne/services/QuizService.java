@@ -15,7 +15,7 @@ import finals.allInOne.InputMethods;
 import finals.allInOne.models.Question;
 
 public class QuizService {
-    private static final String QUESTION_FILE_PATH = "finals/theact/data/Questions.txt";
+    private static final String QUESTION_FILE_PATH = "finals/allInOne/data/Questions.txt";
 
     public static List<Question> loadQuestions() {
         List<Question> questionList = new ArrayList<>();
@@ -153,8 +153,8 @@ public class QuizService {
 
     public static void saveQuestions(List<Question> questionList) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(QUESTION_FILE_PATH))) {
-            StringBuilder s = new StringBuilder();
             for (Question question : questionList) {
+                StringBuilder s = new StringBuilder();
                 s.append(question.getQuestion())
                         .append(",")
                         .append(question.getOptionA())
@@ -167,8 +167,6 @@ public class QuizService {
 
                 writer.write(s.toString());
                 writer.newLine();
-
-                s.setLength(0);
             }
         } catch (IOException e) {
             e.printStackTrace();
