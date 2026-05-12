@@ -23,6 +23,7 @@ public class Quizzer {
                         | [1] Logout                                         |
                         | [2] Play                                           |
                         | [3] Manage Question Bank                           |
+                        | [4] Leaderboard                                    |
                         | [0] Exit                                           |
                         |____________________________________________________|
                         """);
@@ -33,11 +34,12 @@ public class Quizzer {
                         | [1] Player Registration                            |
                         | [2] Play                                           |
                         | [3] Manage Question Bank                           |
+                        | [4] Leaderboard                                    |
                         | [0] Exit                                           |
                         |____________________________________________________|
                         """);
             }
-            int choice1 = InputMethods.inputInt("Choice: ", 0, 3);
+            int choice1 = InputMethods.inputInt("Choice: ", 0, 4);
 
             switch (choice1) {
                 case 1 -> {
@@ -89,7 +91,7 @@ public class Quizzer {
                         if (score > currentUser.getHighestScore()) {
                             System.out.println("NEW HIGH SCORE!");
                             currentUser.setHighestScore(score);
-                            UserService.saveUsers(userList); // Persist the change immediately!
+                            UserService.saveUsers(userList);
                         }
 
                         System.out.printf("your score is %d out of %d\n", score, selectedQuestions.size());
@@ -97,6 +99,9 @@ public class Quizzer {
                 }
                 case 3 -> {
                     QuizService.manageQuestionBank(questionList);
+                }
+                case 4 -> {
+                    UserService.displayLeaderboard(userList);
                 }
                 case 0 -> {
                     System.out.println("Exiting the program...");

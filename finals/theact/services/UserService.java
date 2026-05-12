@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import finals.theact.models.User;
@@ -114,5 +115,40 @@ public class UserService {
         userList.add(user);
 
         saveUsers(userList);
+    }
+
+    public static void displayLeaderboard(List<User> userList) {
+        System.out.println("""
+                 ____________________________________________________
+                |                                                    |
+                |                   LEADERBOARD                      |
+                |____________________________________________________|
+                """);
+
+        if (userList.isEmpty()) {
+            System.out.println("No players registered yet!");
+            return;
+        }
+
+        List<User> sorted = new ArrayList<>(userList);
+        sorted.sort(Comparator.comparingInt(User::getHighestScore).reversed());
+
+        String[] medals = {"🥇", "🥈", "🥉"};
+
+        System.out.printf("%-6s %-20s %s%n", "Rank", "Username", "Highest Score");
+        System.out.println("----------------------------------------------");
+
+        for (int i = 0; i < sorted.size(); i++) {
+            User user = sorted.get(i);
+            String rank;
+            if (i < 3) {
+                rank = medals[i] + " #" + (i + 1);
+            } else {
+                rank = "   #" + (i + 1);
+            }
+            System.out.printf("%-9s %-20s %d%n", rank, user.getUsername(), user.getHighestScore());
+        }
+
+        System.out.println("----------------------------------------------");
     }
 }
