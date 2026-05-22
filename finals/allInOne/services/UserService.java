@@ -61,7 +61,7 @@ public class UserService {
             for (User user : userList) {
                 s.setLength(0);
 
-                s.append(user.getUsername())
+                s.append(user.getUsername().replace(",", ""))
                         .append(",")
                         .append(user.getPassword())
                         .append(",")

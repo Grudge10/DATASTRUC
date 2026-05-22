@@ -1,0 +1,18 @@
+
+ ______________________________________
+|                                      |
+|     Welcome to Liam's Supermall!     |
+|    (Remember, keep it wholesome!)    |
+|______________________________________|
+ ______________________________________
+|                                      |
+|  MAIN MENU:                          |
+|                                      |
+|  [1] Grocery Department Store        |
+|  [2] Movie Rental Registration       |
+|  [3] GPU Registration                |
+|  [4] Quizzer                         |
+|  [0] Exit                            |
+|______________________________________|
+
+Choice: 

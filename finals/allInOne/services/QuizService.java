@@ -113,7 +113,7 @@ public class QuizService {
                     if (answered[index]) {
                         InputMethods.println("You have already answered that question!");
                     } else {
-                        int ans = InputMethods.inputInt("Answer (1-3): ", input,1, 3);
+                        int ans = InputMethods.inputInt("Answer (1-3): ", input, 1, 3);
                         if (ans == questionList.get(index).getAnswer()) {
                             InputMethods.println("Absolutely correct!");
                             correct[index] = true;
@@ -155,7 +155,7 @@ public class QuizService {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(QUESTION_FILE_PATH))) {
             for (Question question : questionList) {
                 StringBuilder s = new StringBuilder();
-                s.append(question.getQuestion())
+                s.append(question.getQuestion().replace(",", ""))
                         .append(",")
                         .append(question.getOptionA())
                         .append(",")
